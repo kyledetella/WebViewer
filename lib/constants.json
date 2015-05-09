@@ -1,0 +1,19 @@
+{
+  "events": {
+    "GO_BUTTON_PRESSED": "GO_BUTTON_PRESSED",
+    "BACK_BUTTON_PRESSED": "BACK_BUTTON_PRESSED",
+    "FORWARD_BUTTON_PRESSED": "FORWARD_BUTTON_PRESSED"
+  },
+  "refs": {
+    "WEBVIEW_REF": "webview",
+    "TEXT_INPUT_REF": "urlInput"
+  },
+  "defaults": {
+    "URL": "https://braintreepayments.com"
+  },
+  "styles": {
+    "HEADER": "#7D8382",
+    "BGWASH": "rgba(255, 255, 255, 0.8)",
+    "DISABLED_WASH": "rgba(255, 255, 255, 0.25)"
+  }
+}

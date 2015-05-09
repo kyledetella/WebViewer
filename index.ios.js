@@ -12,19 +12,17 @@ var {
   WebView
 } = React;
 
+var constants = require('./lib/constants.json');
 var styles = require('./lib/style/styles');
 var AddressBar = require('./lib/components/address-bar');
 
-var WEBVIEW_REF = 'webview';
-var DEFAULT_URL = 'https://braintreepayments.com';
-
 var WebViewer = React.createClass({
   componentDidMount: function () {
-    var events = {
-      GO_BUTTON_PRESSED: this.navigate,
-      BACK_BUTTON_PRESSED: this.goBack,
-      FORWARD_BUTTON_PRESSED: this.goForward
-    };
+    let events = {};
+
+    events[constants.events.GO_BUTTON_PRESSED] = this.navigate,
+    events[constants.events.BACK_BUTTON_PRESSED] = this.goBack,
+    events[constants.events.FORWARD_BUTTON_PRESSED] = this.goForward
 
     Object.keys(events).forEach((event) => {
       RCTDeviceEventEmitter.addListener(event, events[event]);
@@ -33,7 +31,7 @@ var WebViewer = React.createClass({
 
   getInitialState: function () {
     return {
-      url: DEFAULT_URL,
+      url: constants.defaults.URL,
       status: 'No Page Loaded',
       backButtonEnabled: false,
       forwardButtonEnabled: false,
@@ -52,7 +50,7 @@ var WebViewer = React.createClass({
           goForward={this.goForward}
         />
         <WebView
-          ref={WEBVIEW_REF}
+          ref={constants.refs.WEBVIEW_REF}
           automaticallyAdjustContentInsets={false}
           style={styles.webView}
           url={this.state.url}
@@ -68,15 +66,15 @@ var WebViewer = React.createClass({
   },
 
   goBack: function () {
-    this.refs[WEBVIEW_REF].goBack();
+    this.refs[constants.refs.WEBVIEW_REF].goBack();
   },
 
   goForward: function () {
-    this.refs[WEBVIEW_REF].goForward();
+    this.refs[constants.refs.WEBVIEW_REF].goForward();
   },
 
   reload: function () {
-    this.refs[WEBVIEW_REF].reload();
+    this.refs[constants.refs.WEBVIEW_REF].reload();
   },
 
   onNavigationStateChange: function(navState) {
@@ -92,6 +90,7 @@ var WebViewer = React.createClass({
   navigate: function (payload) {
     var {url} = payload;
 
+    // TODO: check for protocol
     if (url === this.state.url) {
       this.reload();
     } else {
