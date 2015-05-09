@@ -5,7 +5,7 @@ This project my exploration into building a native iOS app using [React Native](
 
 ## Background
 
-When writing JavaScript libraries, testing for specific cases in WebViews on iOS and Android proves rather difficult. WebViewer aims to improve the debugging and testing story in this domain.
+When writing JavaScript libraries, testing for specific cases in WebViews on iOS and Android proves rather difficult. WebviewTester aims to improve the debugging and testing story in this domain.
 
 ## Setup
 

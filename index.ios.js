@@ -16,7 +16,7 @@ var constants = require('./lib/constants.json');
 var styles = require('./lib/style/styles');
 var AddressBar = require('./lib/components/address-bar');
 
-var WebViewer = React.createClass({
+var WebviewTester = React.createClass({
   componentDidMount: function () {
     let events = {};
 
@@ -108,8 +108,8 @@ exports.description = 'Base component to display web content';
 exports.examples = [
   {
     title: 'WebView',
-    render(): ReactElement { return <WebViewer />; }
+    render(): ReactElement { return <WebviewTester />; }
   }
 ];
 
-AppRegistry.registerComponent('WebviewTester', () => WebViewer);
+AppRegistry.registerComponent('WebviewTester', () => WebviewTester);
